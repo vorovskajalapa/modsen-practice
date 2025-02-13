@@ -1,12 +1,12 @@
-import React from "react";
-import Board from "./Board";
-import styled from "styled-components";
-import KanbanHeader from "./Headers";
+import React from 'react';
+import Board from './Board';
+import styled from 'styled-components';
+import KanbanHeader from './Headers';
 
 const KanbanWrapper = styled.div`
   height: 100vh;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #fafafa;
 `;
 

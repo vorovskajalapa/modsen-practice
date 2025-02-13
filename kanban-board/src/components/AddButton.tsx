@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Button = styled.button`
   display: flex;
@@ -10,7 +10,9 @@ const Button = styled.button`
   border: 1px solid white;
   background: transparent;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);

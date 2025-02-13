@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import DropIndicator from "./DropIndicator";
-import { motion } from "framer-motion";
+import React from 'react';
+import styled from 'styled-components';
+import DropIndicator from './DropIndicator';
+import { motion } from 'framer-motion';
 
 const CardContainer = styled(motion.div)`
   cursor: grab;

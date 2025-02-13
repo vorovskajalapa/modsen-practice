@@ -1,9 +1,9 @@
-import { useState } from "react";
-import styled from "styled-components";
-import Card from "./Card";
-import DropIndicator from "./DropIndicator";
-import AddCard from "./AddCard";
-import AddButton from "./AddButton"; // Новый компонент кнопки "+"
+import { useState } from 'react';
+import styled from 'styled-components';
+import Card from './Card';
+import DropIndicator from './DropIndicator';
+import AddCard from './AddCard';
+import AddButton from './AddButton'; // Новый компонент кнопки "+"
 
 const ColumnContainer = styled.div`
   width: 18rem; /* Было 14rem, теперь 18rem */
@@ -42,7 +42,7 @@ const CardList = styled.div<{ $active: boolean }>`
   height: 100%;
   width: 100%;
   transition: background-color 0.2s ease-in-out;
-  background-color: #E2E8F0; /* Чуть темнее F7FAFC */
+  background-color: #e2e8f0; /* Чуть темнее F7FAFC */
   padding: 0.5rem;
   border-radius: 8px;
   margin-top: 1rem; /* Увеличенный отступ */
@@ -52,11 +52,11 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
   const [active, setActive] = useState(false);
 
   const handleDragStart = (e, card) => {
-    e.dataTransfer.setData("cardId", card.id);
+    e.dataTransfer.setData('cardId', card.id);
   };
 
   const handleDragEnd = (e) => {
-    const cardId = e.dataTransfer.getData("cardId");
+    const cardId = e.dataTransfer.getData('cardId');
 
     setActive(false);
     clearHighlights();
@@ -64,7 +64,7 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
     const indicators = getIndicators();
     const { element } = getNearestIndicator(e, indicators);
 
-    const before = element.dataset.before || "-1";
+    const before = element.dataset.before || '-1';
 
     if (before !== cardId) {
       let copy = [...cards];
@@ -75,7 +75,7 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
 
       copy = copy.filter((c) => c.id !== cardId);
 
-      const moveToBack = before === "-1";
+      const moveToBack = before === '-1';
 
       if (moveToBack) {
         copy.push(cardToTransfer);
@@ -98,14 +98,14 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
 
   const clearHighlights = (els) => {
     const indicators = els || getIndicators();
-    indicators.forEach((i) => (i.style.opacity = "0"));
+    indicators.forEach((i) => (i.style.opacity = '0'));
   };
 
   const highlightIndicator = (e) => {
     const indicators = getIndicators();
     clearHighlights(indicators);
     const el = getNearestIndicator(e, indicators);
-    el.element.style.opacity = "1";
+    el.element.style.opacity = '1';
   };
 
   const getNearestIndicator = (e, indicators) => {
@@ -118,7 +118,10 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
           ? { offset, element: child }
           : closest;
       },
-      { offset: Number.NEGATIVE_INFINITY, element: indicators[indicators.length - 1] }
+      {
+        offset: Number.NEGATIVE_INFINITY,
+        element: indicators[indicators.length - 1],
+      }
     );
   };
 

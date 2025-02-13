@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Indicator = styled.div`
   margin: 2px 0;
@@ -9,7 +9,7 @@ const Indicator = styled.div`
 `;
 
 const DropIndicator = ({ beforeId, column }) => {
-  return <Indicator data-before={beforeId || "-1"} data-column={column} />;
+  return <Indicator data-before={beforeId || '-1'} data-column={column} />;
 };
 
 export default DropIndicator;

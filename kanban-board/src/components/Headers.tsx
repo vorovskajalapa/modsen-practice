@@ -1,6 +1,6 @@
-import React from "react";
-import { BiPlusCircle } from "react-icons/bi";
-import styled from "styled-components";
+import React from 'react';
+import { BiPlusCircle } from 'react-icons/bi';
+import styled from 'styled-components';
 
 const Header = styled.header`
   display: flex;
@@ -14,7 +14,7 @@ const Header = styled.header`
 const Title = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
-  color: #1e293b; 
+  color: #1e293b;
 `;
 
 const AddButton = styled.button`
@@ -24,7 +24,7 @@ const AddButton = styled.button`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #f1f5f9; 
+  background-color: #f1f5f9;
   border: none;
   cursor: pointer;
   transition: background 0.2s;
@@ -35,8 +35,8 @@ const AddButton = styled.button`
 `;
 
 const PlusIcon = styled(BiPlusCircle)`
-  transform: scale(0.9); 
-  width: 36px; 
+  transform: scale(0.9);
+  width: 36px;
   height: 36px;
   color: #1e293b;
 `;

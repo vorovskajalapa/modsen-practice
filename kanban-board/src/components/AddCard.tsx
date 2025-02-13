@@ -1,6 +1,6 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { FiPlus } from "react-icons/fi";
+import { useState } from 'react';
+import styled from 'styled-components';
+import { FiPlus } from 'react-icons/fi';
 
 const FormContainer = styled.form`
   margin-top: 0.5rem;
@@ -45,7 +45,7 @@ const AddTaskButton = styled.button<{ $color: string }>`
 `;
 
 const AddCard = ({ column, setCards, textColor }) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [adding, setAdding] = useState(false);
 
   const handleSubmit = (e) => {
