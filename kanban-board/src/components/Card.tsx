@@ -1,17 +1,38 @@
-import React from 'react';
-import DropIndicator from './DropIndicator';
+import React from "react";
+import styled from "styled-components";
+import DropIndicator from "./DropIndicator";
+import { motion } from "framer-motion";
 
-const Card = ({ title, id, column }) => {
+const CardContainer = styled(motion.div)`
+  cursor: grab;
+  background: #f5f5dc; /* Бежевый */
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:active {
+    cursor: grabbing;
+  }
+`;
+
+const CardText = styled.p`
+  font-size: 0.875rem;
+  color: #333;
+`;
+
+const Card = ({ title, id, column, handleDragStart }) => {
   return (
     <>
       <DropIndicator beforeId={id} column={column} />
-      <div
+      <CardContainer
+        layout
+        layoutId={id}
         draggable="true"
-        className="cursor-grab rounded border border-neutral-700 bg-neutral-800 p-3 active:cursor-grabbing"
+        onDragStart={(e) => handleDragStart(e, { title, id, column })}
       >
-        <p className="text-sm text-neutral-100">{title}</p>
-        <DropIndicator beforeId={"-1"} column={column} />
-      </div>
+        <CardText>{title}</CardText>
+      </CardContainer>
     </>
   );
 };

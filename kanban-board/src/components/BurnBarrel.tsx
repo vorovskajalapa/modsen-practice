@@ -1,4 +1,4 @@
-import React, { act, use, useState } from 'react'
+import React, { useState } from 'react'
 import { FaFire } from 'react-icons/fa';
 import { FiTrash } from 'react-icons/fi';
 
