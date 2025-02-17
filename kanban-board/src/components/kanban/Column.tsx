@@ -1,70 +1,52 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import { useState, DragEvent } from 'react';
 import Card from './Card';
-import DropIndicator from './DropIndicator';
+import {
+  CardList,
+  ColumnContainer,
+  Count,
+  Header,
+  Title,
+} from './Column.styles';
+import { AddButton, DropIndicator } from '../common';
 import AddCard from './AddCard';
-import AddButton from './AddButton'; // Новый компонент кнопки "+"
 
-const ColumnContainer = styled.div`
-  width: 18rem; /* Было 14rem, теперь 18rem */
-  flex-shrink: 0;
-`;
+interface ColumnProps {
+  title: string;
+  bgColor: string;
+  cards: CardType[];
+  column: string;
+  setCards: React.Dispatch<React.SetStateAction<CardType[]>>;
+}
 
-const Header = styled.div<{ $bgColor: string }>`
-  background-color: ${(props) => props.$bgColor};
-  color: #ffffff;
-  border-radius: 9999px;
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+interface CardType {
+  id: string;
+  column: string;
+  title: string;
+  description?: string;
+}
 
-const Count = styled.span`
-  background: white;
-  color: #4f46e5;
-  border-radius: 9999px;
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
-  font-weight: bold;
-`;
-
-const Title = styled.h3`
-  font-weight: 500;
-  margin-left: 0.5rem;
-`;
-
-const CardList = styled.div<{ $active: boolean }>`
-  height: 100%;
-  width: 100%;
-  transition: background-color 0.2s ease-in-out;
-  background-color: #e2e8f0; /* Чуть темнее F7FAFC */
-  padding: 0.5rem;
-  border-radius: 8px;
-  margin-top: 1rem; /* Увеличенный отступ */
-`;
-
-const Column = ({ title, bgColor, cards, column, setCards }) => {
+const Column: React.FC<ColumnProps> = ({
+  title,
+  bgColor,
+  cards,
+  column,
+  setCards,
+}) => {
   const [active, setActive] = useState(false);
 
-  const handleDragStart = (e, card) => {
+  const handleDragStart = (e: DragEvent, card: CardType) => {
     e.dataTransfer.setData('cardId', card.id);
   };
 
-  const handleDragEnd = (e) => {
+  const handleDragEnd = (e: DragEvent) => {
     const cardId = e.dataTransfer.getData('cardId');
-
     setActive(false);
     clearHighlights();
 
     const indicators = getIndicators();
     const { element } = getNearestIndicator(e, indicators);
 
-    const before = element.dataset.before || '-1';
+    const before = element?.dataset.before || '-1';
 
     if (before !== cardId) {
       let copy = [...cards];
@@ -75,14 +57,11 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
 
       copy = copy.filter((c) => c.id !== cardId);
 
-      const moveToBack = before === '-1';
-
-      if (moveToBack) {
+      if (before === '-1') {
         copy.push(cardToTransfer);
       } else {
         const insertAtIndex = copy.findIndex((el) => el.id === before);
-        if (insertAtIndex === undefined) return;
-
+        if (insertAtIndex === -1) return;
         copy.splice(insertAtIndex, 0, cardToTransfer);
       }
 
@@ -90,25 +69,27 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
     }
   };
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: DragEvent) => {
     e.preventDefault();
     highlightIndicator(e);
     setActive(true);
   };
 
-  const clearHighlights = (els) => {
+  const clearHighlights = (els?: HTMLElement[]) => {
     const indicators = els || getIndicators();
     indicators.forEach((i) => (i.style.opacity = '0'));
   };
 
-  const highlightIndicator = (e) => {
+  const highlightIndicator = (e: DragEvent) => {
     const indicators = getIndicators();
     clearHighlights(indicators);
     const el = getNearestIndicator(e, indicators);
-    el.element.style.opacity = '1';
+    if (el.element) {
+      el.element.style.opacity = '1';
+    }
   };
 
-  const getNearestIndicator = (e, indicators) => {
+  const getNearestIndicator = (e: DragEvent, indicators: HTMLElement[]) => {
     const DISTANCE_OFFSET = 50;
     return indicators.reduce(
       (closest, child) => {
@@ -120,12 +101,12 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
       },
       {
         offset: Number.NEGATIVE_INFINITY,
-        element: indicators[indicators.length - 1],
+        element: indicators[indicators.length - 1] as HTMLElement,
       }
     );
   };
 
-  const getIndicators = () => {
+  const getIndicators = (): HTMLElement[] => {
     return Array.from(document.querySelectorAll(`[data-column="${column}"]`));
   };
 
@@ -152,7 +133,7 @@ const Column = ({ title, bgColor, cards, column, setCards }) => {
         {filteredCards.map((c) => (
           <Card key={c.id} {...c} handleDragStart={handleDragStart} />
         ))}
-        <DropIndicator beforeId={null} column={column} />
+        <DropIndicator beforeId={undefined} column={column} />
         <AddCard column={column} setCards={setCards} textColor={bgColor} />
       </CardList>
     </ColumnContainer>

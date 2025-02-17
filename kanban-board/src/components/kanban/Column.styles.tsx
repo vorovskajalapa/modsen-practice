@@ -1,0 +1,44 @@
+import styled from 'styled-components';
+
+export const ColumnContainer = styled.div`
+  width: 18rem;
+  flex-shrink: 0;
+`;
+
+export const Header = styled.div<{ $bgColor: string }>`
+  background-color: ${(props) => props.$bgColor};
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Count = styled.span`
+  background: white;
+  color: #4f46e5;
+  border-radius: 9999px;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: bold;
+`;
+
+export const Title = styled.h3`
+  font-weight: 500;
+  margin-left: 0.5rem;
+`;
+
+export const CardList = styled.div<{ $active: boolean }>`
+  height: 100%;
+  width: 100%;
+  transition: background-color 0.2s ease-in-out;
+  background-color: #e2e8f0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+`;

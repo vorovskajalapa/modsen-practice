@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@ const Button = styled.button`
   }
 `;
 
-const Plus = styled.span`
+export const Plus = styled.span`
   position: absolute;
   background: white;
 
@@ -33,14 +33,3 @@ const Plus = styled.span`
     height: 12px;
   }
 `;
-
-const AddButton = () => {
-  return (
-    <Button>
-      <Plus />
-      <Plus />
-    </Button>
-  );
-};
-
-export default AddButton;
