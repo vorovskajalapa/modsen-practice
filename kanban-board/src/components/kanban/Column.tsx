@@ -1,4 +1,4 @@
-import { useState, DragEvent } from 'react';
+import { useState, useRef, DragEvent } from 'react';
 import Card from './Card';
 import {
   CardList,
@@ -33,6 +33,11 @@ const Column: React.FC<ColumnProps> = ({
   setCards,
 }) => {
   const [active, setActive] = useState(false);
+  const addCardRef = useRef<{ openInput: () => void }>(null);
+
+  const handleAddButtonClick = () => {
+    addCardRef.current?.openInput();
+  };
 
   const handleDragStart = (e: DragEvent, card: CardType) => {
     e.dataTransfer.setData('cardId', card.id);
@@ -122,7 +127,7 @@ const Column: React.FC<ColumnProps> = ({
       <Header $bgColor={bgColor}>
         <Count>{filteredCards.length}</Count>
         <Title>{title}</Title>
-        <AddButton />
+        <AddButton onClick={handleAddButtonClick} />
       </Header>
       <CardList
         $active={active}
@@ -134,7 +139,7 @@ const Column: React.FC<ColumnProps> = ({
           <Card key={c.id} {...c} handleDragStart={handleDragStart} />
         ))}
         <DropIndicator beforeId={undefined} column={column} />
-        <AddCard column={column} setCards={setCards} textColor={bgColor} />
+        <AddCard ref={addCardRef} column={column} setCards={setCards} textColor={bgColor} />
       </CardList>
     </ColumnContainer>
   );
