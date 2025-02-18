@@ -1,8 +1,8 @@
 import { Button, Plus } from './AddButton.styles';
 
-export const AddButton = () => {
+export const AddButton = ({ onClick }: { onClick: () => void }) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <Plus />
       <Plus />
     </Button>

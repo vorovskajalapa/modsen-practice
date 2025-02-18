@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef, useImperativeHandle } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { AddTaskButton, FormContainer, Input } from './AddCard.styles';
 
@@ -14,9 +14,13 @@ interface AddCardProps {
   textColor: string;
 }
 
-const AddCard: React.FC<AddCardProps> = ({ column, setCards, textColor }) => {
+const AddCard = forwardRef(({ column, setCards, textColor }: AddCardProps, ref) => {
   const [text, setText] = useState('');
   const [adding, setAdding] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    openInput: () => setAdding(true),
+  }));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,6 +51,6 @@ const AddCard: React.FC<AddCardProps> = ({ column, setCards, textColor }) => {
       <span>Add task...</span>
     </AddTaskButton>
   );
-};
+});
 
 export default AddCard;
