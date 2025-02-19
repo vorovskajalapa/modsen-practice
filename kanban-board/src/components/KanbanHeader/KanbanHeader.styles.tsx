@@ -11,10 +11,13 @@ export const Header = styled.header`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 38px;
+  letter-spacing: -0.013em; 
   color: #1e293b;
 `;
+
 
 export const AddButton = styled.button`
   display: flex;
