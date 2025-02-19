@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardContainer, CardText } from './Card.styles';
-import { DropIndicator } from '../common/DropIndicator';
+import { DropIndicator } from '../DropIndicator';
 
 interface CardProps {
   title: string;
@@ -12,7 +12,7 @@ interface CardProps {
   ) => void;
 }
 
-const Card: React.FC<CardProps> = ({ title, id, column, handleDragStart }) => {
+export const Card: React.FC<CardProps> = ({ title, id, column, handleDragStart }) => {
   return (
     <>
       <DropIndicator beforeId={id} column={column} />
@@ -27,5 +27,3 @@ const Card: React.FC<CardProps> = ({ title, id, column, handleDragStart }) => {
     </>
   );
 };
-
-export default Card;
