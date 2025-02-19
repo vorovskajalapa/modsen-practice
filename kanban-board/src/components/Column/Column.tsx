@@ -7,9 +7,9 @@ import {
   Title,
 } from './Column.styles';
 import { DropIndicator } from '../DropIndicator/DropIndicator';
-import { AddButton } from '../KanbanHeader/KanbanHeader.styles';
 import { Card } from '../Card';
 import { AddCardField } from '../AddCardField';
+import { AddCardButton } from '../AddCardButton';
 
 interface ColumnProps {
   title: string;
@@ -128,7 +128,7 @@ export const Column: React.FC<ColumnProps> = ({
       <Header $bgColor={bgColor}>
         <Count>{filteredCards.length}</Count>
         <Title>{title}</Title>
-        <AddButton onClick={handleAddButtonClick} />
+        <AddCardButton onClick={handleAddButtonClick} />
       </Header>
       <CardList
         $active={active}
