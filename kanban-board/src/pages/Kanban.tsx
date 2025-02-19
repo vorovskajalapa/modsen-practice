@@ -23,6 +23,7 @@ const DEFAULT_COLUMNS = [
   { title: 'Backlog', column: 'backlog', bgColor: '#4F46E5' },
   { title: 'TODO', column: 'todo', bgColor: '#F59E0B' },
   { title: 'In Progress', column: 'doing', bgColor: '#22C55E' },
+  { title: 'Done', column: 'done', bgColor: '#10B981' },
 ];
 
 export const Kanban = () => {
@@ -32,7 +33,7 @@ export const Kanban = () => {
   return (
     <KanbanWrapper>
       <KanbanHeader setColumns={setColumns} />
-      <Board cards={cards} setCards={setCards} />
+      <Board columns={columns} cards={cards} setCards={setCards} />
     </KanbanWrapper>
   );
 };
