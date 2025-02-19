@@ -1,1 +1,1 @@
-export { KanbanHeader } from './KanbanHeader'
+export { KanbanHeader } from './KanbanHeader';

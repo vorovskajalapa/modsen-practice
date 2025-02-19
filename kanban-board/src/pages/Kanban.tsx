@@ -13,7 +13,7 @@ type Column = {
   title: string;
   column: string;
   bgColor: string;
-}
+};
 
 const DEFAULT_CARDS: Card[] = [
   { title: 'Добавляйте новые задания!', id: '1', column: 'todo' },
@@ -28,7 +28,7 @@ const DEFAULT_COLUMNS = [
 
 export const Kanban = () => {
   const [cards, setCards] = useState<Card[]>(DEFAULT_CARDS);
-  const [columns, setColumns] = useState<Column[]>(DEFAULT_COLUMNS)
+  const [columns, setColumns] = useState<Column[]>(DEFAULT_COLUMNS);
 
   return (
     <KanbanWrapper>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BoardContainer = styled.div`
   display: flex;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 20px;
   padding: 3rem;

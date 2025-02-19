@@ -1,4 +1,4 @@
-import { Kanban } from "./pages/Kanban";
+import { Kanban } from './pages/Kanban';
 
 const App = () => {
   return (

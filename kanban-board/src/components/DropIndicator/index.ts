@@ -1,1 +1,1 @@
-export { DropIndicator } from './DropIndicator'
+export { DropIndicator } from './DropIndicator';

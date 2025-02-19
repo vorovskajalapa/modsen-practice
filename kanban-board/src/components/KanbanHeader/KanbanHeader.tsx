@@ -1,7 +1,9 @@
 import { AddButton, Header, PlusIcon, Title } from './KanbanHeader.styles';
 
 type KanbanHeaderProps = {
-  setColumns: React.Dispatch<React.SetStateAction<{ title: string; column: string; bgColor: string; }[]>>;
+  setColumns: React.Dispatch<
+    React.SetStateAction<{ title: string; column: string; bgColor: string }[]>
+  >;
 };
 
 export const KanbanHeader: React.FC<KanbanHeaderProps> = ({ setColumns }) => {

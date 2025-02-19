@@ -12,7 +12,12 @@ interface CardProps {
   ) => void;
 }
 
-export const Card: React.FC<CardProps> = ({ title, id, column, handleDragStart }) => {
+export const Card: React.FC<CardProps> = ({
+  title,
+  id,
+  column,
+  handleDragStart,
+}) => {
   return (
     <>
       <DropIndicator beforeId={id} column={column} />
