@@ -1,4 +1,4 @@
-import { Kanban } from './components/kanban';
+import { Kanban } from './components/Kanban';
 
 const App = () => {
   return (

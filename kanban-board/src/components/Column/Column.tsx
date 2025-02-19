@@ -1,14 +1,9 @@
 import { useState, useRef, DragEvent } from 'react';
-import Card from './Card';
-import {
-  CardList,
-  ColumnContainer,
-  Count,
-  Header,
-  Title,
-} from './Column.styles';
-import { AddButton, DropIndicator } from '../common';
-import AddCard from './AddCard';
+import { CardList, ColumnContainer, Count, Header, Title } from './Column.styles';
+import { DropIndicator } from '../DropIndicator/DropIndicator';
+import { AddButton } from '../KanbanHeader/KanbanHeader.styles';
+import { Card } from '../Card';
+import { AddCardField } from '../AddCardField';
 
 interface ColumnProps {
   title: string;
@@ -25,7 +20,7 @@ interface CardType {
   description?: string;
 }
 
-const Column: React.FC<ColumnProps> = ({
+export const Column: React.FC<ColumnProps> = ({
   title,
   bgColor,
   cards,
@@ -139,10 +134,8 @@ const Column: React.FC<ColumnProps> = ({
           <Card key={c.id} {...c} handleDragStart={handleDragStart} />
         ))}
         <DropIndicator beforeId={undefined} column={column} />
-        <AddCard ref={addCardRef} column={column} setCards={setCards} textColor={bgColor} />
+        <AddCardField ref={addCardRef} column={column} setCards={setCards} textColor={bgColor} />
       </CardList>
     </ColumnContainer>
   );
 };
-
-export default Column;
