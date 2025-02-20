@@ -1,4 +1,6 @@
-import { AddButton, Header, PlusIcon, Title } from './KanbanHeader.styles';
+import { useState } from "react";
+import { AddButton, Header, PlusIcon, Title } from "./KanbanHeader.styles";
+import { AddColumnModal } from "../AddColumnModal/AddColumnModal";
 
 type KanbanHeaderProps = {
   setColumns: React.Dispatch<
@@ -7,21 +9,27 @@ type KanbanHeaderProps = {
 };
 
 export const KanbanHeader: React.FC<KanbanHeaderProps> = ({ setColumns }) => {
-  const addColumn = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddColumn = (title: string, bgColor: string) => {
     const newColumn = {
-      title: `Column ${Date.now()}`,
+      title,
       column: `column-${Date.now()}`,
-      bgColor: '#888888',
+      bgColor,
     };
     setColumns((prev) => [...prev, newColumn]);
+    setIsModalOpen(false);
   };
 
   return (
-    <Header>
-      <Title>Kanban Dashboard</Title>
-      <AddButton onClick={addColumn}>
-        <PlusIcon />
-      </AddButton>
-    </Header>
+    <>
+      <Header>
+        <Title>Kanban Dashboard</Title>
+        <AddButton onClick={() => setIsModalOpen(true)}>
+          <PlusIcon />
+        </AddButton>
+      </Header>
+      {isModalOpen && <AddColumnModal onClose={() => setIsModalOpen(false)} onSubmit={handleAddColumn} />}
+    </>
   );
 };
