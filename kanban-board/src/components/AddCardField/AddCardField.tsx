@@ -35,11 +35,11 @@ export const AddCardField = forwardRef(
 
       setCards((prev) => [...prev, newCard]);
       setAdding(false);
-      setText(''); // Очищаем поле ввода после добавления
+      setText('');
     };
 
     const handleBlur = () => {
-      setAdding(false); // Закрываем ввод при потере фокуса
+      setAdding(false);
     };
 
     return adding ? (
@@ -47,7 +47,7 @@ export const AddCardField = forwardRef(
         <Input
           $color={textColor}
           onChange={(e) => setText(e.target.value)}
-          onBlur={handleBlur} // Закрываем, если фокус ушел
+          onBlur={handleBlur}
           autoFocus
           placeholder="Add task..."
         />

@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
-import { Column } from "../Column";
-import { BoardContainer } from "./Board.styles";
+import { useRef, useState } from 'react';
+import { Column } from '../Column';
+import { BoardContainer } from './Board.styles';
 
 type Card = {
   title: string;
@@ -37,7 +37,7 @@ export const Board: React.FC<BoardProps> = ({ columns, cards, setCards }) => {
     if (!isDragging || !boardRef.current) return;
     e.preventDefault();
     const x = e.pageX - boardRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1.5; // Скорость прокрутки
+    const walk = (x - startX.current) * 1.5;
     boardRef.current.scrollLeft = scrollLeft.current - walk;
   };
 

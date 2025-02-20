@@ -16,10 +16,10 @@ export const CardContainer = styled(motion.div)`
 `;
 
 export const CardText = styled.p`
-  font-size: 16px; 
+  font-size: 16px;
   font-weight: 400;
-  line-height: 25.6px; 
-  letter-spacing: 0; 
+  line-height: 25.6px;
+  letter-spacing: 0;
   color: #333;
 `;
 
@@ -28,7 +28,7 @@ export const PriorityBadge = styled.span<{ priority: string }>`
   font-size: 12px;
   font-weight: 600;
   line-height: 16px;
-  letter-spacing: -0.005em; 
+  letter-spacing: -0.005em;
   text-align: center;
   padding: 4px 8px;
   border-radius: 16px;
@@ -36,7 +36,9 @@ export const PriorityBadge = styled.span<{ priority: string }>`
   background-color: #edf1ff;
 
   color: ${({ priority }) =>
-    priority === 'high' ? '#EF4444' :
-      priority === 'medium' ? '#F59E0B' :
-        '#22C55E'};                       
+    priority === 'high'
+      ? '#EF4444'
+      : priority === 'medium'
+        ? '#F59E0B'
+        : '#22C55E'};
 `;

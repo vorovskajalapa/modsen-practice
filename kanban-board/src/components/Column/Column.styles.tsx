@@ -32,7 +32,7 @@ export const Title = styled.h3`
   font-size: 15px;
   font-weight: 700;
   line-height: 22px;
-  letter-spacing: -0.007em; 
+  letter-spacing: -0.007em;
   margin-left: 0.5rem;
 `;
 
@@ -42,11 +42,11 @@ export const CardList = styled.div<{ $active: boolean }>`
   padding: 0.5rem;
   border-radius: 8px;
   margin-top: 1rem;
-  
+
   display: flex;
   flex-direction: column;
   gap: 8px; /* Расстояние между карточками */
-  
+
   min-height: 50px; /* Чтобы не схлопывался, когда карточек нет */
   height: auto; /* Автоматическая подстройка под содержимое */
 `;

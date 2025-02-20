@@ -29,7 +29,9 @@ export const Card: React.FC<CardProps> = ({
         draggable="true"
         onDragStart={(e) => handleDragStart(e, { title, id, column, priority })}
       >
-        {priority && <PriorityBadge priority={priority}>{priority}</PriorityBadge>}
+        {priority && (
+          <PriorityBadge priority={priority}>{priority}</PriorityBadge>
+        )}
         <CardText>{title}</CardText>
       </CardContainer>
     </>

@@ -1,1 +1,1 @@
-export { AddCardButton } from './AddCardButton'
+export { AddCardButton } from './AddCardButton';
