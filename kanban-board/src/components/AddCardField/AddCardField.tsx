@@ -1,6 +1,8 @@
 import { useState, forwardRef, useImperativeHandle } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { FormContainer, AddTaskButton, Input } from './AddCardField.styles';
+import { useDispatch } from 'react-redux';
+import { addCard } from '../../store/slices/KanbanSlice';
 
 interface Card {
   column: string;
@@ -10,14 +12,15 @@ interface Card {
 
 interface AddCardProps {
   column: string;
-  setCards: React.Dispatch<React.SetStateAction<Card[]>>;
   textColor: string;
 }
 
 export const AddCardField = forwardRef(
-  ({ column, setCards, textColor }: AddCardProps, ref) => {
+  ({ column, textColor }: AddCardProps, ref) => {
     const [text, setText] = useState('');
     const [adding, setAdding] = useState(false);
+
+    const dispatch = useDispatch()
 
     useImperativeHandle(ref, () => ({
       openInput: () => setAdding(true),
@@ -33,7 +36,7 @@ export const AddCardField = forwardRef(
         id: Math.random().toString(),
       };
 
-      setCards((prev) => [...prev, newCard]);
+      dispatch(addCard(newCard));
       setAdding(false);
       setText('');
     };

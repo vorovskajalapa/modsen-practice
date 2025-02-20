@@ -17,10 +17,9 @@ type ColumnData = {
 type BoardProps = {
   columns: ColumnData[];
   cards: Card[];
-  setCards: React.Dispatch<React.SetStateAction<Card[]>>;
 };
 
-export const Board: React.FC<BoardProps> = ({ columns, cards, setCards }) => {
+export const Board: React.FC<BoardProps> = ({ columns, cards }) => {
   const boardRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const startX = useRef(0);
@@ -60,7 +59,6 @@ export const Board: React.FC<BoardProps> = ({ columns, cards, setCards }) => {
           column={column}
           bgColor={bgColor}
           cards={cards}
-          setCards={setCards}
         />
       ))}
     </BoardContainer>
