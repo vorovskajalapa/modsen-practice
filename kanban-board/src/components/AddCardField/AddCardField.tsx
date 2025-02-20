@@ -35,6 +35,11 @@ export const AddCardField = forwardRef(
 
       setCards((prev) => [...prev, newCard]);
       setAdding(false);
+      setText('');
+    };
+
+    const handleBlur = () => {
+      setAdding(false);
     };
 
     return adding ? (
@@ -42,6 +47,7 @@ export const AddCardField = forwardRef(
         <Input
           $color={textColor}
           onChange={(e) => setText(e.target.value)}
+          onBlur={handleBlur}
           autoFocus
           placeholder="Add task..."
         />

@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 export const BoardContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 3rem;
-  width: 100%;
-  min-width: 100vw;
-  margin: 0 auto;
   overflow-x: auto;
+  white-space: nowrap;
+  height: 80%;
+  gap: 16px;
+  padding: 16px;
+  cursor: grab;
+  user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
 `;

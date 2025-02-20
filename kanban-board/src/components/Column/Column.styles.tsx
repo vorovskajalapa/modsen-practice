@@ -29,16 +29,24 @@ export const Count = styled.span`
 `;
 
 export const Title = styled.h3`
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.007em;
   margin-left: 0.5rem;
 `;
 
 export const CardList = styled.div<{ $active: boolean }>`
-  height: 100%;
   width: 100%;
-  transition: background-color 0.2s ease-in-out;
-  background-color: #e2e8f0;
+  background-color: #edf1ff;
   padding: 0.5rem;
   border-radius: 8px;
   margin-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Расстояние между карточками */
+
+  min-height: 50px; /* Чтобы не схлопывался, когда карточек нет */
+  height: auto; /* Автоматическая подстройка под содержимое */
 `;
