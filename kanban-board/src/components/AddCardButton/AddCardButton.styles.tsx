@@ -13,6 +13,7 @@ export const Button = styled.button`
   transition:
     background 0.2s,
     border-color 0.2s;
+  position: relative; 
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
@@ -26,10 +27,16 @@ export const Plus = styled.span`
   &:first-child {
     width: 12px;
     height: 2px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   &:last-child {
     width: 2px;
     height: 12px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 `;

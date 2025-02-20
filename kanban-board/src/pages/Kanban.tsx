@@ -21,7 +21,7 @@ const DEFAULT_CARDS: Card[] = [
 
 const DEFAULT_COLUMNS = [
   { title: 'Backlog', column: 'backlog', bgColor: '#4F46E5' },
-  { title: 'TODO', column: 'todo', bgColor: '#F59E0B' },
+  { title: 'To Do', column: 'todo', bgColor: '#F59E0B' },
   { title: 'In Progress', column: 'doing', bgColor: '#22C55E' },
   { title: 'Done', column: 'done', bgColor: '#10B981' },
 ];
