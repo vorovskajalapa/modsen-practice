@@ -3,19 +3,14 @@ import { FiPlus } from 'react-icons/fi';
 import { FormContainer, AddTaskButton, Input } from './AddCardField.styles';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../../store/slices/KanbanSlice';
-
-interface Card {
-  column: string;
-  title: string;
-  id: string;
-}
+import { CardType } from '../../types';
 
 interface AddCardProps {
   column: string;
   textColor: string;
 }
 
-export const AddCardField = forwardRef(
+export const AddCardField: React.FC<AddCardProps> = forwardRef(
   ({ column, textColor }: AddCardProps, ref) => {
     const [text, setText] = useState('');
     const [adding, setAdding] = useState(false);
@@ -30,7 +25,7 @@ export const AddCardField = forwardRef(
       e.preventDefault();
       if (!text.trim().length) return;
 
-      const newCard: Card = {
+      const newCard: CardType = {
         column,
         title: text.trim(),
         id: Math.random().toString(),

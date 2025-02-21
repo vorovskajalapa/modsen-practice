@@ -12,19 +12,13 @@ import { AddCardField } from '../AddCardField';
 import { AddCardButton } from '../AddCardButton';
 import { useDispatch } from 'react-redux';
 import { moveCard } from '../../store/slices/KanbanSlice';
+import { CardType } from '../../types';
 
 interface ColumnProps {
   title: string;
   bgColor: string;
   cards: CardType[];
   column: string;
-}
-
-interface CardType {
-  id: string;
-  column: string;
-  title: string;
-  description?: string;
 }
 
 export const Column: React.FC<ColumnProps> = ({

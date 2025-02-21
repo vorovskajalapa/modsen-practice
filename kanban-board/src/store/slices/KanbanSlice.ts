@@ -1,20 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-type Card = {
-  title: string;
-  id: string;
-  column: string;
-};
-
-type Column = {
-  title: string;
-  column: string;
-  bgColor: string;
-};
+import { CardType, ColumnType } from "../../types";
 
 interface KanbanState {
-  cards: Card[];
-  columns: Column[];
+  cards: CardType[];
+  columns: ColumnType[];
 }
 
 const loadInitialState = (): KanbanState => {

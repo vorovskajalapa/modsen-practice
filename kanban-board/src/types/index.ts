@@ -1,10 +1,10 @@
-export type Card = {
+export type CardType = {
   title: string;
   id: string;
   column: string;
 };
 
-export type Column = {
+export type ColumnType = {
   title: string;
   column: string;
   bgColor: string;

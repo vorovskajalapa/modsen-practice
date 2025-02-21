@@ -1,22 +1,10 @@
-import { useRef, useState } from 'react';
 import { Column } from '../Column';
 import { BoardContainer } from './Board.styles';
-
-type Card = {
-  title: string;
-  id: string;
-  column: string;
-};
-
-type ColumnData = {
-  title: string;
-  column: string;
-  bgColor: string;
-};
+import { CardType, ColumnType } from '../../types';
 
 type BoardProps = {
-  columns: ColumnData[];
-  cards: Card[];
+  columns: ColumnType[];
+  cards: CardType[];
 };
 
 export const Board: React.FC<BoardProps> = ({ columns, cards }) => {
