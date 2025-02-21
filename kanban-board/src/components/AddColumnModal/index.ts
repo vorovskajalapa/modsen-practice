@@ -1,1 +1,1 @@
-export { AddColumnModal } from './AddColumnModal'
+export { AddColumnModal } from './AddColumnModal';

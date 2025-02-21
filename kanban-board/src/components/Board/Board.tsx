@@ -1,6 +1,6 @@
+import { CardType, ColumnType } from '../../types';
 import { Column } from '../Column';
 import { BoardContainer } from './Board.styles';
-import { CardType, ColumnType } from '../../types';
 
 type BoardProps = {
   columns: ColumnType[];

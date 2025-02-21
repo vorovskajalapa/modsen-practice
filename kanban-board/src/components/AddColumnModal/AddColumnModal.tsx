@@ -1,14 +1,26 @@
-import { useState } from "react";
-import { Overlay, ModalContainer, Title, Input, ColorInput, ButtonGroup, Button } from "./AddColumnModal.styles";
+import { useState } from 'react';
+
+import {
+  Button,
+  ButtonGroup,
+  ColorInput,
+  Input,
+  ModalContainer,
+  Overlay,
+  Title,
+} from './AddColumnModal.styles';
 
 interface AddColumnModalProps {
   onClose: () => void;
   onSubmit: (title: string, bgColor: string) => void;
 }
 
-export const AddColumnModal: React.FC<AddColumnModalProps> = ({ onClose, onSubmit }) => {
-  const [title, setTitle] = useState("");
-  const [bgColor, setBgColor] = useState("#888888");
+export const AddColumnModal: React.FC<AddColumnModalProps> = ({
+  onClose,
+  onSubmit,
+}) => {
+  const [title, setTitle] = useState('');
+  const [bgColor, setBgColor] = useState('#888888');
 
   const handleSubmit = () => {
     if (!title.trim()) return;
@@ -31,8 +43,12 @@ export const AddColumnModal: React.FC<AddColumnModalProps> = ({ onClose, onSubmi
           onChange={(e) => setBgColor(e.target.value)}
         />
         <ButtonGroup>
-          <Button onClick={onClose} $variant="cancel">Отмена</Button>
-          <Button onClick={handleSubmit} $variant="submit">Добавить</Button>
+          <Button onClick={onClose} $variant="cancel">
+            Отмена
+          </Button>
+          <Button onClick={handleSubmit} $variant="submit">
+            Добавить
+          </Button>
         </ButtonGroup>
       </ModalContainer>
     </Overlay>

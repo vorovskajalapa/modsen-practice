@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import kanbanReducer from "./slices/KanbanSlice";
+import { configureStore } from '@reduxjs/toolkit';
+
+import kanbanReducer from './slices/KanbanSlice';
 
 export const store = configureStore({
   reducer: {
@@ -10,9 +11,9 @@ export const store = configureStore({
 store.subscribe(() => {
   try {
     const state = store.getState();
-    localStorage.setItem("kanbanState", JSON.stringify(state.kanban));
+    localStorage.setItem('kanbanState', JSON.stringify(state.kanban));
   } catch (err) {
-    console.error("Failed to save state", err);
+    console.error('Failed to save state', err);
   }
 });
 
