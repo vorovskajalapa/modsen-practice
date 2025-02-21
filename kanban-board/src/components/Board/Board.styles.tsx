@@ -7,10 +7,5 @@ export const BoardContainer = styled.div`
   height: 80%;
   gap: 16px;
   padding: 16px;
-  cursor: grab;
   user-select: none;
-
-  &:active {
-    cursor: grabbing;
-  }
 `;
