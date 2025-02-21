@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { AddButton, Header, PlusIcon, Title } from "./KanbanHeader.styles";
 import { AddColumnModal } from "../AddColumnModal/AddColumnModal";
+import { useDispatch } from "react-redux";
+import { addColumn } from "../../store/slices/KanbanSlice";
 
-type KanbanHeaderProps = {
-  setColumns: React.Dispatch<
-    React.SetStateAction<{ title: string; column: string; bgColor: string }[]>
-  >;
-};
 
-export const KanbanHeader: React.FC<KanbanHeaderProps> = ({ setColumns }) => {
+export const KanbanHeader: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleAddColumn = (title: string, bgColor: string) => {
     const newColumn = {
@@ -17,7 +16,7 @@ export const KanbanHeader: React.FC<KanbanHeaderProps> = ({ setColumns }) => {
       column: `column-${Date.now()}`,
       bgColor,
     };
-    setColumns((prev) => [...prev, newColumn]);
+    dispatch(addColumn(newColumn))
     setIsModalOpen(false);
   };
 

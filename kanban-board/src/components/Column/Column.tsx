@@ -10,13 +10,14 @@ import { DropIndicator } from '../DropIndicator/DropIndicator';
 import { Card } from '../Card';
 import { AddCardField } from '../AddCardField';
 import { AddCardButton } from '../AddCardButton';
+import { useDispatch } from 'react-redux';
+import { moveCard } from '../../store/slices/KanbanSlice';
 
 interface ColumnProps {
   title: string;
   bgColor: string;
   cards: CardType[];
   column: string;
-  setCards: React.Dispatch<React.SetStateAction<CardType[]>>;
 }
 
 interface CardType {
@@ -31,10 +32,11 @@ export const Column: React.FC<ColumnProps> = ({
   bgColor,
   cards,
   column,
-  setCards,
 }) => {
   const [active, setActive] = useState(false);
   const addCardRef = useRef<{ openInput: () => void }>(null);
+
+  const dispatch = useDispatch()
 
   const handleAddButtonClick = () => {
     addCardRef.current?.openInput();
@@ -45,33 +47,17 @@ export const Column: React.FC<ColumnProps> = ({
   };
 
   const handleDragEnd = (e: DragEvent) => {
-    const cardId = e.dataTransfer.getData('cardId');
+    const cardId = e.dataTransfer.getData("cardId");
     setActive(false);
     clearHighlights();
 
     const indicators = getIndicators();
     const { element } = getNearestIndicator(e, indicators);
 
-    const before = element?.dataset.before || '-1';
+    const beforeId = element?.dataset.before || null;
 
-    if (before !== cardId) {
-      let copy = [...cards];
-
-      let cardToTransfer = copy.find((c) => c.id === cardId);
-      if (!cardToTransfer) return;
-      cardToTransfer = { ...cardToTransfer, column };
-
-      copy = copy.filter((c) => c.id !== cardId);
-
-      if (before === '-1') {
-        copy.push(cardToTransfer);
-      } else {
-        const insertAtIndex = copy.findIndex((el) => el.id === before);
-        if (insertAtIndex === -1) return;
-        copy.splice(insertAtIndex, 0, cardToTransfer);
-      }
-
-      setCards(copy);
+    if (beforeId !== cardId) {
+      dispatch(moveCard({ id: cardId, newColumn: column, beforeId }));
     }
   };
 
@@ -143,7 +129,6 @@ export const Column: React.FC<ColumnProps> = ({
         <AddCardField
           ref={addCardRef}
           column={column}
-          setCards={setCards}
           textColor={bgColor}
         />
       </CardList>
