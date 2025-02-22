@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import { CardType, ColumnType } from '../../types';
 
 interface KanbanState {
@@ -14,14 +13,14 @@ const loadInitialState = (): KanbanState => {
 
 const initialState: KanbanState = {
   cards: [
-    { title: 'Set up Redux', id: '1', column: 'backlog' },
-    { title: 'Create Kanban UI', id: '2', column: 'backlog' },
-    { title: 'Implement Drag & Drop', id: '3', column: 'todo' },
-    { title: 'Connect Redux with UI', id: '4', column: 'todo' },
-    { title: 'Fix state persistence issue', id: '5', column: 'doing' },
-    { title: 'Optimize performance', id: '6', column: 'doing' },
-    { title: 'Deploy to production', id: '7', column: 'done' },
-    { title: 'Write documentation', id: '8', column: 'done' },
+    { title: 'Set up Redux', id: '1', column: 'backlog', priority: 'low' },
+    { title: 'Create Kanban UI', id: '2', column: 'backlog', priority: 'low' },
+    { title: 'Implement Drag & Drop', id: '3', column: 'todo', priority: 'medium' },
+    { title: 'Connect Redux with UI', id: '4', column: 'todo', priority: 'medium' },
+    { title: 'Fix state persistence issue', id: '5', column: 'doing', priority: 'high' },
+    { title: 'Optimize performance', id: '6', column: 'doing', priority: 'high' },
+    { title: 'Deploy to production', id: '7', column: 'done', priority: 'low' },
+    { title: 'Write documentation', id: '8', column: 'done', priority: 'low' },
   ],
   columns: [
     { title: 'Backlog', column: 'backlog', bgColor: '#4F46E5' },
@@ -55,6 +54,7 @@ const kanbanSlice = createSlice({
         id: (state.cards.length + 1).toString(),
         title: action.payload.title,
         column: action.payload.column,
+        priority: 'low', 
       };
       state.cards.push(newCard);
       saveState(state);
@@ -68,14 +68,10 @@ const kanbanSlice = createSlice({
       }>
     ) => {
       const { id, newColumn, beforeId } = action.payload;
-
       const cardIndex = state.cards.findIndex((card) => card.id === id);
       if (cardIndex === -1) return;
-
       const card = { ...state.cards[cardIndex], column: newColumn };
-
       state.cards.splice(cardIndex, 1);
-
       if (beforeId) {
         const insertAtIndex = state.cards.findIndex(
           (card) => card.id === beforeId
@@ -89,6 +85,17 @@ const kanbanSlice = createSlice({
         state.cards.push(card);
       }
     },
+    updateCardPriority: (
+      state,
+      action: PayloadAction<{ id: string; priority: 'low' | 'medium' | 'high' }>
+    ) => {
+      const { id, priority } = action.payload;
+      const cardIndex = state.cards.findIndex((card) => card.id === id);
+      if (cardIndex !== -1) {
+        state.cards[cardIndex].priority = priority;
+        saveState(state);
+      }
+    },
   },
 });
 
@@ -100,5 +107,5 @@ const saveState = (state: KanbanState) => {
   }
 };
 
-export const { addColumn, addCard, moveCard } = kanbanSlice.actions;
+export const { addColumn, addCard, moveCard, updateCardPriority } = kanbanSlice.actions;
 export default kanbanSlice.reducer;
