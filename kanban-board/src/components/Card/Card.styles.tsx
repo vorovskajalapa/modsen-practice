@@ -39,8 +39,8 @@ export const PriorityBadge = styled.span<{ priority: string }>`
     priority === 'High'
       ? '#EF4444'
       : priority === 'Medium'
-      ? '#F59E0B'
-      : '#22C55E'};
+        ? '#F59E0B'
+        : '#22C55E'};
 `;
 
 export const DropdownMenu = styled.div`
@@ -60,11 +60,10 @@ export const DropdownItem = styled.div<{ priority: string }>`
     priority === 'High'
       ? '#EF4444'
       : priority === 'Medium'
-      ? '#F59E0B'
-      : '#22C55E'};
-  
+        ? '#F59E0B'
+        : '#22C55E'};
+
   &:hover {
     background-color: #f0f0f0;
   }
 `;
-

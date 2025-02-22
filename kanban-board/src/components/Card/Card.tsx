@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { DropIndicator } from '../DropIndicator';
-import { CardContainer, CardText, PriorityBadge, DropdownMenu, DropdownItem } from './Card.styles';
+import {
+  CardContainer,
+  CardText,
+  PriorityBadge,
+  DropdownMenu,
+  DropdownItem,
+} from './Card.styles';
 import { updateCardPriority } from '../../store/slices/KanbanSlice';
 
 interface CardProps {
@@ -48,9 +54,24 @@ export const Card: React.FC<CardProps> = ({
         )}
         {isDropdownOpen && (
           <DropdownMenu>
-            <DropdownItem onClick={() => handlePriorityChange('Low')} priority="Low">Low</DropdownItem>
-            <DropdownItem onClick={() => handlePriorityChange('Medium')} priority="Medium">Medium</DropdownItem>
-            <DropdownItem onClick={() => handlePriorityChange('High')} priority="High">High</DropdownItem>
+            <DropdownItem
+              onClick={() => handlePriorityChange('Low')}
+              priority="Low"
+            >
+              Low
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => handlePriorityChange('Medium')}
+              priority="Medium"
+            >
+              Medium
+            </DropdownItem>
+            <DropdownItem
+              onClick={() => handlePriorityChange('High')}
+              priority="High"
+            >
+              High
+            </DropdownItem>
           </DropdownMenu>
         )}
         <CardText>{title}</CardText>

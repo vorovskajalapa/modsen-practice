@@ -30,7 +30,7 @@ export const AddCardField: React.FC<AddCardProps> = forwardRef(
         column,
         title: text.trim(),
         id: Math.random().toString(),
-        priority: 'high'
+        priority: 'high',
       };
 
       dispatch(addCard(newCard));

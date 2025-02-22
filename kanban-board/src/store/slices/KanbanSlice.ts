@@ -15,10 +15,30 @@ const initialState: KanbanState = {
   cards: [
     { title: 'Set up Redux', id: '1', column: 'backlog', priority: 'Low' },
     { title: 'Create Kanban UI', id: '2', column: 'backlog', priority: 'Low' },
-    { title: 'Implement Drag & Drop', id: '3', column: 'todo', priority: 'Medium' },
-    { title: 'Connect Redux with UI', id: '4', column: 'todo', priority: 'Medium' },
-    { title: 'Fix state persistence issue', id: '5', column: 'doing', priority: 'High' },
-    { title: 'Optimize performance', id: '6', column: 'doing', priority: 'High' },
+    {
+      title: 'Implement Drag & Drop',
+      id: '3',
+      column: 'todo',
+      priority: 'Medium',
+    },
+    {
+      title: 'Connect Redux with UI',
+      id: '4',
+      column: 'todo',
+      priority: 'Medium',
+    },
+    {
+      title: 'Fix state persistence issue',
+      id: '5',
+      column: 'doing',
+      priority: 'High',
+    },
+    {
+      title: 'Optimize performance',
+      id: '6',
+      column: 'doing',
+      priority: 'High',
+    },
     { title: 'Deploy to production', id: '7', column: 'done', priority: 'Low' },
     { title: 'Write documentation', id: '8', column: 'done', priority: 'Low' },
   ],
@@ -48,13 +68,13 @@ const kanbanSlice = createSlice({
     },
     addCard: (
       state,
-      action: PayloadAction<{ title: string; column: string; }>
+      action: PayloadAction<{ title: string; column: string }>
     ) => {
       const newCard = {
         id: (state.cards.length + 1).toString(),
         title: action.payload.title,
         column: action.payload.column,
-        priority: 'Low', 
+        priority: 'Low',
       };
       state.cards.push(newCard);
       saveState(state);
@@ -107,5 +127,6 @@ const saveState = (state: KanbanState) => {
   }
 };
 
-export const { addColumn, addCard, moveCard, updateCardPriority } = kanbanSlice.actions;
+export const { addColumn, addCard, moveCard, updateCardPriority } =
+  kanbanSlice.actions;
 export default kanbanSlice.reducer;
