@@ -1,4 +1,22 @@
 import styled from 'styled-components';
+import { FaTrash } from 'react-icons/fa';
+
+export const TrashIcon = styled(FaTrash)`
+  cursor: pointer;
+  color: #ef4444;
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+
+  &:hover {
+    color: #dc2626;
+  }
+`;
+
+export const ButtonWithIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
 
 export const ColumnContainer = styled.div`
   width: 18rem;
@@ -45,8 +63,8 @@ export const CardList = styled.div<{ $active: boolean }>`
 
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Расстояние между карточками */
+  gap: 8px;
 
-  min-height: 50px; /* Чтобы не схлопывался, когда карточек нет */
-  height: auto; /* Автоматическая подстройка под содержимое */
+  min-height: 50px;
+  height: auto;
 `;

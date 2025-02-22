@@ -116,6 +116,15 @@ const kanbanSlice = createSlice({
         saveState(state);
       }
     },
+    deleteColumn: (state, action: PayloadAction<string>) => {
+      state.columns = state.columns.filter(
+        (col) => col.column !== action.payload
+      );
+      state.cards = state.cards.filter(
+        (card) => card.column !== action.payload
+      ); 
+      saveState(state);
+    },
   },
 });
 
@@ -127,6 +136,11 @@ const saveState = (state: KanbanState) => {
   }
 };
 
-export const { addColumn, addCard, moveCard, updateCardPriority } =
-  kanbanSlice.actions;
+export const {
+  addColumn,
+  addCard,
+  moveCard,
+  updateCardPriority,
+  deleteColumn,
+} = kanbanSlice.actions;
 export default kanbanSlice.reducer;
