@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { AddButton, Header, PlusIcon, Title } from "./KanbanHeader.styles";
-import { AddColumnModal } from "../AddColumnModal/AddColumnModal";
-import { useDispatch } from "react-redux";
-import { addColumn } from "../../store/slices/KanbanSlice";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { addColumn } from '../../store/slices/KanbanSlice';
+import { AddColumnModal } from '../AddColumnModal/AddColumnModal';
+import { AddButton, Header, PlusIcon, Title } from './KanbanHeader.styles';
 
 export const KanbanHeader: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,7 +16,7 @@ export const KanbanHeader: React.FC = () => {
       column: `column-${Date.now()}`,
       bgColor,
     };
-    dispatch(addColumn(newColumn))
+    dispatch(addColumn(newColumn));
     setIsModalOpen(false);
   };
 
@@ -28,7 +28,12 @@ export const KanbanHeader: React.FC = () => {
           <PlusIcon />
         </AddButton>
       </Header>
-      {isModalOpen && <AddColumnModal onClose={() => setIsModalOpen(false)} onSubmit={handleAddColumn} />}
+      {isModalOpen && (
+        <AddColumnModal
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={handleAddColumn}
+        />
+      )}
     </>
   );
 };

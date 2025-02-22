@@ -1,4 +1,12 @@
-import { useState, useRef, DragEvent } from 'react';
+import { DragEvent, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { moveCard } from '../../store/slices/KanbanSlice';
+import { CardType } from '../../types';
+import { AddCardButton } from '../AddCardButton';
+import { AddCardField } from '../AddCardField';
+import { Card } from '../Card';
+import { DropIndicator } from '../DropIndicator/DropIndicator';
 import {
   CardList,
   ColumnContainer,
@@ -6,25 +14,12 @@ import {
   Header,
   Title,
 } from './Column.styles';
-import { DropIndicator } from '../DropIndicator/DropIndicator';
-import { Card } from '../Card';
-import { AddCardField } from '../AddCardField';
-import { AddCardButton } from '../AddCardButton';
-import { useDispatch } from 'react-redux';
-import { moveCard } from '../../store/slices/KanbanSlice';
 
 interface ColumnProps {
   title: string;
   bgColor: string;
   cards: CardType[];
   column: string;
-}
-
-interface CardType {
-  id: string;
-  column: string;
-  title: string;
-  description?: string;
 }
 
 export const Column: React.FC<ColumnProps> = ({
@@ -36,7 +31,7 @@ export const Column: React.FC<ColumnProps> = ({
   const [active, setActive] = useState(false);
   const addCardRef = useRef<{ openInput: () => void }>(null);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleAddButtonClick = () => {
     addCardRef.current?.openInput();
@@ -47,7 +42,7 @@ export const Column: React.FC<ColumnProps> = ({
   };
 
   const handleDragEnd = (e: DragEvent) => {
-    const cardId = e.dataTransfer.getData("cardId");
+    const cardId = e.dataTransfer.getData('cardId');
     setActive(false);
     clearHighlights();
 
@@ -126,11 +121,7 @@ export const Column: React.FC<ColumnProps> = ({
           <Card key={c.id} {...c} handleDragStart={handleDragStart} />
         ))}
         <DropIndicator beforeId={undefined} column={column} />
-        <AddCardField
-          ref={addCardRef}
-          column={column}
-          textColor={bgColor}
-        />
+        <AddCardField ref={addCardRef} column={column} textColor={bgColor} />
       </CardList>
     </ColumnContainer>
   );

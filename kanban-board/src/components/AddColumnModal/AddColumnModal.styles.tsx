@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -33,15 +33,14 @@ export const Input = styled.input`
   font-size: 15px;
   font-weight: 600;
   line-height: 22px;
-  color: #333; 
-  background: white; 
+  color: #333;
+  background: white;
   outline: none;
 
   &::placeholder {
-    color: #999; 
+    color: #999;
   }
 `;
-
 
 export const ColorInput = styled.input`
   width: 100%;
@@ -57,7 +56,7 @@ export const ButtonGroup = styled.div`
   gap: 10px;
 `;
 
-export const Button = styled.button<{ $variant: "cancel" | "submit" }>`
+export const Button = styled.button<{ $variant: 'cancel' | 'submit' }>`
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
@@ -67,10 +66,11 @@ export const Button = styled.button<{ $variant: "cancel" | "submit" }>`
   font-weight: 500;
   line-height: 22px;
 
-  background: ${({ $variant }) => ($variant === "submit" ? "#007bff" : "#ccc")};
-  color: ${({ $variant }) => ($variant === "submit" ? "white" : "black")};
+  background: ${({ $variant }) => ($variant === 'submit' ? '#007bff' : '#ccc')};
+  color: ${({ $variant }) => ($variant === 'submit' ? 'white' : 'black')};
 
   &:hover {
-    background: ${({ $variant }) => ($variant === "submit" ? "#0056b3" : "#aaa")};
+    background: ${({ $variant }) =>
+      $variant === 'submit' ? '#0056b3' : '#aaa'};
   }
 `;

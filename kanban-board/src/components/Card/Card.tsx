@@ -1,6 +1,7 @@
 import React from 'react';
-import { CardContainer, CardText, PriorityBadge } from './Card.styles';
+
 import { DropIndicator } from '../DropIndicator';
+import { CardContainer, CardText, PriorityBadge } from './Card.styles';
 
 interface CardProps {
   title: string;

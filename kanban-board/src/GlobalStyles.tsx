@@ -1,5 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
 import '@fontsource/plus-jakarta-sans/index.css';
+
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   * {
