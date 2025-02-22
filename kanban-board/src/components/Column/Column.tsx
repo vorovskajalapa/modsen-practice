@@ -1,7 +1,6 @@
-import { DragEvent, useRef, useState } from 'react';
+import React, { DragEvent, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
-import { moveCard } from '../../store/slices/KanbanSlice';
+import { moveCard, deleteColumn } from '../../store/slices/KanbanSlice';
 import { CardType } from '../../types';
 import { AddCardButton } from '../AddCardButton';
 import { AddCardField } from '../AddCardField';
@@ -13,6 +12,8 @@ import {
   Count,
   Header,
   Title,
+  TrashIcon,
+  ButtonWithIconContainer,
 } from './Column.styles';
 
 interface ColumnProps {
@@ -29,8 +30,8 @@ export const Column: React.FC<ColumnProps> = ({
   column,
 }) => {
   const [active, setActive] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const addCardRef = useRef<{ openInput: () => void }>(null);
-
   const dispatch = useDispatch();
 
   const handleAddButtonClick = () => {
@@ -102,6 +103,10 @@ export const Column: React.FC<ColumnProps> = ({
     setActive(false);
   };
 
+  const handleDeleteColumn = () => {
+    dispatch(deleteColumn(column));
+  };
+
   const filteredCards = cards.filter((c) => c.column === column);
 
   return (
@@ -109,7 +114,12 @@ export const Column: React.FC<ColumnProps> = ({
       <Header $bgColor={bgColor}>
         <Count>{filteredCards.length}</Count>
         <Title>{title}</Title>
-        <AddCardButton onClick={handleAddButtonClick} />
+        <ButtonWithIconContainer>
+          {!['Backlog', 'To Do', 'In Progress', 'Done'].includes(title) && (
+            <TrashIcon onClick={handleDeleteColumn} />
+          )}
+          <AddCardButton onClick={handleAddButtonClick} />
+        </ButtonWithIconContainer>
       </Header>
       <CardList
         $active={active}
