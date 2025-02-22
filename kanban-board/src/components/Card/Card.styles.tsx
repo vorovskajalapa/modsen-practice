@@ -36,9 +36,35 @@ export const PriorityBadge = styled.span<{ priority: string }>`
   background-color: #edf1ff;
 
   color: ${({ priority }) =>
-    priority === 'high'
+    priority === 'High'
       ? '#EF4444'
-      : priority === 'medium'
-        ? '#F59E0B'
-        : '#22C55E'};
+      : priority === 'Medium'
+      ? '#F59E0B'
+      : '#22C55E'};
 `;
+
+export const DropdownMenu = styled.div`
+  position: absolute;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 8px;
+  width: 100px;
+`;
+
+export const DropdownItem = styled.div<{ priority: string }>`
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: ${({ priority }) =>
+    priority === 'High'
+      ? '#EF4444'
+      : priority === 'Medium'
+      ? '#F59E0B'
+      : '#22C55E'};
+  
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+
