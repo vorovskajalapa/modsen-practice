@@ -7,8 +7,10 @@ import {
   PriorityBadge,
   DropdownMenu,
   DropdownItem,
+  DeleteButton,
 } from './Card.styles';
-import { updateCardPriority } from '../../store/slices/KanbanSlice';
+import { deleteCard, updateCardPriority } from '../../store/slices/KanbanSlice';
+import { X } from 'lucide-react';
 
 interface CardProps {
   title: string;
@@ -38,6 +40,10 @@ export const Card: React.FC<CardProps> = ({
     setDropdownOpen(false);
   };
 
+  const handleDelete = () => {
+    dispatch(deleteCard(id));
+  };
+
   return (
     <>
       <DropIndicator beforeId={id} column={column} />
@@ -47,6 +53,9 @@ export const Card: React.FC<CardProps> = ({
         draggable="true"
         onDragStart={(e) => handleDragStart(e, { title, id, column, priority })}
       >
+        <DeleteButton onClick={handleDelete}>
+          <X size={16} />
+        </DeleteButton>
         {priority && (
           <PriorityBadge priority={priority} onClick={toggleDropdown}>
             {priority}
