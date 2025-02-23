@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const CardContainer = styled(motion.div)`
-  position: relative;
   cursor: grab;
   background: #ffffff;
   border-radius: 16px;
@@ -66,18 +65,5 @@ export const DropdownItem = styled.div<{ priority: string }>`
 
   &:hover {
     background-color: #f0f0f0;
-  }
-`;
-
-export const DeleteButton = styled.button`
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #888;
-  &:hover {
-    color: #000;
   }
 `;
