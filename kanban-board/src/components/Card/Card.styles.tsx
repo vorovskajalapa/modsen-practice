@@ -35,6 +35,10 @@ export const PriorityBadge = styled.span<{ priority: string }>`
   margin-bottom: 8px;
   background-color: #edf1ff;
 
+
+  cursor: pointer;
+
+
   color: ${({ priority }) =>
     priority === 'High'
       ? '#EF4444'
