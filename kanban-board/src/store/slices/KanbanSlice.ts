@@ -122,7 +122,7 @@ const kanbanSlice = createSlice({
       );
       state.cards = state.cards.filter(
         (card) => card.column !== action.payload
-      ); 
+      );
       saveState(state);
     },
   },
