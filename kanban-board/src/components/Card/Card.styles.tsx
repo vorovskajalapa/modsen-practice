@@ -8,7 +8,7 @@ export const CardContainer = styled(motion.div)`
   padding: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease-in-out;
-  border-left: 6px solid transparent; /* Отступ для индикатора приоритета */
+  border-left: 6px solid transparent;
 
   &:active {
     cursor: grabbing;
@@ -34,6 +34,10 @@ export const PriorityBadge = styled.span<{ priority: string }>`
   border-radius: 16px;
   margin-bottom: 8px;
   background-color: #edf1ff;
+
+
+  cursor: pointer;
+
 
   color: ${({ priority }) =>
     priority === 'High'

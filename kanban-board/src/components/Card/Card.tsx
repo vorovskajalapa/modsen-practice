@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
+import { updateCardPriority } from '../../store/slices/KanbanSlice';
 import { DropIndicator } from '../DropIndicator';
 import {
   CardContainer,
   CardText,
-  PriorityBadge,
-  DropdownMenu,
   DropdownItem,
+  DropdownMenu,
+  PriorityBadge,
 } from './Card.styles';
-import { updateCardPriority } from '../../store/slices/KanbanSlice';
 
 interface CardProps {
   title: string;
