@@ -22,6 +22,7 @@ export const Title = styled.h2`
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
+  color: #1c1c1c;
 `;
 
 export const Input = styled.input`
