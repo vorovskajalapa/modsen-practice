@@ -19,6 +19,7 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "framer-motion": "^12.4.2",
     "husky": "^9.1.7",
+    "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",

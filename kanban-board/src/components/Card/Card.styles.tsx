@@ -2,13 +2,14 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const CardContainer = styled(motion.div)`
+  position: relative;
   cursor: grab;
   background: #ffffff;
   border-radius: 16px;
   padding: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease-in-out;
-  border-left: 6px solid transparent; /* Отступ для индикатора приоритета */
+  border-left: 6px solid transparent;
 
   &:active {
     cursor: grabbing;
@@ -69,5 +70,18 @@ export const DropdownItem = styled.div<{ priority: string }>`
 
   &:hover {
     background-color: #f0f0f0;
+  }
+`;
+
+export const DeleteButton = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  &:hover {
+    color: #000;
   }
 `;
